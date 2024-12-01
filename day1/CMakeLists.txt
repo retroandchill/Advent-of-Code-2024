@@ -13,3 +13,7 @@ target_sources(common
 add_executable(problem1 problem1.cpp)
 
 target_link_libraries(problem1 PUBLIC common)
+
+add_executable(problem2 problem2.cpp)
+
+target_link_libraries(problem2 PUBLIC common)

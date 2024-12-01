@@ -17,6 +17,7 @@ export class NumberLists {
         explicit NumberLists(const std::filesystem::path &path);
 
     int get_distance_sum();
+    int get_similarity();
 
     private:
         std::vector<int> list1;

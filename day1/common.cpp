@@ -11,7 +11,9 @@ module;
 #include <format>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <numeric>
+#include <ranges>
 
 module common;
 
@@ -50,6 +52,24 @@ int NumberLists::get_distance_sum() {
         }
         return std::accumulate(diffs.begin(), diffs.end(), 0);
     }
+}
+
+int NumberLists::get_similarity() {
+    std::map<int, int> frequency;
+    for (int value : list2) {
+        auto it = frequency.find(value);
+        if (it == frequency.end()) {
+            frequency.insert({value, 1});
+        } else {
+            ++it->second;
+        }
+    }
+
+    auto products = list1 |
+        std::ranges::views::transform([&](int value) { return frequency.find(value); }) |
+        std::ranges::views::filter([&](const auto& it) { return it != frequency.end(); }) |
+        std::ranges::views::transform([&](const auto &pair) { return pair->first * pair->second; });
+    return std::accumulate(products.begin(), products.end(), 0);
 }
 
 std::string request_input_file() {
