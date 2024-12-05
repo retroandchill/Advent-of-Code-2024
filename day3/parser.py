@@ -1,5 +1,4 @@
 from functools import reduce
-from re import Match
 import re
 from typing import Iterable
 
@@ -7,6 +6,7 @@ from typing import Iterable
 def decode_matches(content: str) -> int:
     matches: list[str] = re.findall(r'mul\((\d+(?:,\d+)*)\)', content)
     return multiply_matches(matches)
+
 
 def decode_with_conditions(content: str) -> int:
     matches: list[str] = re.findall(r'(do\(\)|don\'t\(\)|mul\(\d+(?:,\d+)*\))', content)
@@ -29,6 +29,7 @@ def process_commands(matches: list[str]):
 def multiply_matches(matches: Iterable[str]) -> int:
     multiplied = (mul(l) for l in matches)
     return reduce(lambda x, y: x + y, multiplied, 0)
+
 
 def mul(numbers: str) -> int:
     parsed_numbers = (int(n) for n in numbers.split(','))
