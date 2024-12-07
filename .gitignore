@@ -1,0 +1,28 @@
+# Base
+.idea
+input.txt
+
+# VS Code
+.vscode
+
+# CLion
+cmake-build-*
+
+#Rider
+bin
+obj
+*.user
+
+# Pycharm
+.venv
+__pycache__
+
+#IntelliJ
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.idea
+*.iws
+*.iml
+*.ipr
